@@ -8,7 +8,7 @@ const TodoListItem = ({label, done, important, onDeleted, onToggleImportant, onT
 
   const style = {
     color: important ? `steelblue` : `black`,
-    fontWeight: important ? `bold` : `normal`
+    fontWeight: important ? `bold` : `normal`,
   };
 
   return (
@@ -16,19 +16,24 @@ const TodoListItem = ({label, done, important, onDeleted, onToggleImportant, onT
       <span
         className="todo-list-item-label"
         style={style}
-        onClick={onToggleDone}>
+        onClick={onToggleDone}
+        onKeyDown={onToggleDone}
+        role="button"
+        tabIndex={0}>
         {label}
       </span>
 
-      <button type="button"
-              className="btn btn-outline-success btn-sm float-right"
-              onClick={onToggleImportant}>
+      <button
+        type="button"
+        className="btn btn-outline-success btn-sm float-right"
+        onClick={onToggleImportant}>
         <i className="fa fa-exclamation" />
       </button>
 
-      <button type="button"
-              className="btn btn-outline-danger btn-sm float-right"
-              onClick={onDeleted}>
+      <button
+        type="button"
+        className="btn btn-outline-danger btn-sm float-right"
+        onClick={onDeleted}>
         <i className="fa fa-trash-o" />
       </button>
     </span>
@@ -36,5 +41,3 @@ const TodoListItem = ({label, done, important, onDeleted, onToggleImportant, onT
 };
 
 export default TodoListItem;
-
-

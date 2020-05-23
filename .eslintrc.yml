@@ -1,22 +1,35 @@
 env:
-  es6: true
   browser: true
-  commonjs: true
-  jest: true
-
-extends: ['htmlacademy/es6', 'plugin:react/recommended']
-
+  es6: true
+extends:
+  - 'airbnb'
+  - 'airbnb/hooks'
+  - 'react-app'
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
 parserOptions:
   ecmaFeatures:
     jsx: true
-  ecmaVersion: 2019
+  ecmaVersion: 2018
   sourceType: module
-
-plugins: ['react']
-
-settings:
-  react:
-    version: '16'
-
-rule:
-  prop-types: 'disable'
+plugins:
+  - react
+rules:
+  react/prop-types: 0
+  no-underscore-dangle: 0
+  quotes: ["error", "backtick"]
+  object-curly-spacing: ["error", "never"]
+  quote-props: ["error", "consistent"]
+  max-len: ["error", { "code": 125 }]
+  object-curly-newline: ["error", { "consistent": true }]
+  react/jsx-closing-bracket-location: [0, "props-aligned"]
+  react/jsx-props-no-spreading: [0, "explicitSpread"]
+  no-shadow: 0
+  padded-blocks: ["error", { "classes": "always" }]
+  arrow-body-style: 0
+  react/state-in-constructor: 0
+  react/static-property-placement: 0
+  react/jsx-one-expression-per-line: 0
+  no-case-declarations: 0
+  jsx-a11y/no-noninteractive-element-to-interactive-role: 0

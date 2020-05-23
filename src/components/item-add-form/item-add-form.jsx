@@ -1,38 +1,34 @@
-import React, {PureComponent} from 'react';
+import React, {useState} from 'react';
 import './item-add-form.css';
 
-export default class ItemAddForm extends PureComponent {
+const ItemAddForm = ({onAddItem}) => {
 
-  state = {
-    label: ``,
-  };
+  const [label, setLabel] = useState(``);
 
-  _handleLabelChange = (evt) => {
-    this.setState({label: evt.target.value});
-  };
-
-  _handleSubmitForm = (evt) => {
+  const onFormSubmit = (evt) => {
     evt.preventDefault();
-    this.props.onAddItem(this.state.label);
-    this.setState({label: ``});
+    onAddItem(label);
+    setLabel(``);
   };
 
-  render() {
+  return (
+    <form
+      className="item-add-form d-flex"
+      onSubmit={onFormSubmit}>
+      <input
+        type="text"
+        className="form-control"
+        onChange={({target}) => setLabel(target.value)}
+        value={label}
+        placeholder="What needs to be done" />
 
-    return (
-      <form className="item-add-form d-flex"
-            onSubmit={this._handleSubmitForm}>
-        <input type="text"
-                className="form-control"
-                onChange={this._handleLabelChange}
-                value={this.state.label}
-                placeholder="What needs to be done" />
+      <button
+        type="submit"
+        className="btn btn-outline-secondary">
+        Add Element
+      </button>
+    </form>
+  );
+};
 
-        <button type="submit"
-                className="btn btn-outline-secondary">
-          Add Element
-        </button>
-      </form>
-    );
-  }
-}
+export default ItemAddForm;
